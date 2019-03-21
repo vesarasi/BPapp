@@ -1,0 +1,25 @@
+ <!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link rel="stylesheet" href="style.css" type="text/css">
+		<title>BP App Login</title>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+
+	<body>
+		<div id="loginPage">
+			<div id="headline"><p>Welcome to BPapp</p></div>
+            <fieldset>
+            <form action="<?php $_PHP_SELF ?>" method="POST"> 
+            User name <br> <input type="text" name="name">
+            <br> 
+            Password <br> <input type="password" name="pwd">
+            <input type="hidden" name="form_submitted" value="1" />
+            <br>
+            <input type="submit" value="Login"><br>
+            </fieldset>
+        </form>
+		</div>
+	</body>
+</html> 

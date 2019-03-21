@@ -1,0 +1,42 @@
+
+
+body {
+	background-image: url(Photos/background.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+	font-family: sans-serif;
+
+}
+
+#headline {
+    text-align: center;
+    font-size: 50px;
+    color: rgb(242, 107, 92);
+    
+}
+
+@media screen and (max-width: 600px){
+    #headline {
+    font-size: 35px;
+    }
+}
+
+form {
+    text-align: center;
+    border: 2px;
+    margin: 0 auto;
+    
+}
+
+fieldset{
+    width: 20%;
+    height: auto;
+    text-align: center;
+    margin: auto;
+    border-radius: 10px;
+}
+
+
+
