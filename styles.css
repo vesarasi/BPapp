@@ -1,0 +1,101 @@
+* {
+    box-sizing: border-box;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+html{
+     font-family: Arial, Helvetica, sans-serif;
+}
+
+button{
+    width: 100%;
+    height: auto;
+    border: none;
+    background-color: #00bfff;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.row{
+    margin: auto;
+}
+
+.logo{
+    padding: 30px;
+}
+
+.logo h1{
+    text-align: center;
+    color: #00bfff;
+}
+.box{
+    border: 1px solid #00bfff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    padding: 20px;
+}
+.title{
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #00bfff;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.user-info{
+    padding: 15px;
+}
+
+.user-info ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 10px;
+}
+
+
+[class*="col-"] {
+    float: center;
+    padding: 15px;
+}
+/* For mobile phones: */
+[class*="col-"] {
+    width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  /* For tablets: */
+    .col-s-1 {width: 25%;}
+    .col-s-2 {width: 40%;}
+    .col-s-3 {width: 50%;}
+    .col-s-4 {width: 60%;}
+    .col-s-5 {width: 70%;}
+    .col-s-6 {width: 85%;}
+    .col-s-7 {width: 90%;}
+    .col-s-8 {width: 95%;}
+    .col-s-9 {width: 100%;}
+    
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+    .col-1 {width: 25%;}
+    .col-2 {width: 40%;}
+    .col-3 {width: 50%;}
+    .col-4 {width: 60%;}
+    .col-5 {width: 70%;}
+    .col-6 {width: 85%;}
+    .col-7 {width: 90%;}
+    .col-8 {width: 95%;}
+    .col-9 {width: 100%;}
+}
