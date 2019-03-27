@@ -13,7 +13,7 @@
     $username = "Mattii";
     $password = "mummola";
     $dbname = "mattii"
-            
+    $port = "3306"
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
     // Check connection
@@ -60,7 +60,7 @@
                 <input type="text" name="pulse" id="pulse">
         </form>
         
-        <!--php magick that uses sql magic to create or update the table named after the uses uid for name containing the measurement results. -->
+        //<!--php magick that uses sql magic to create or update the table named after the uses uid for name containing the measurement results. -->
 
         $sql = "CREATE TABLE $UID (
         `SYS` INT(3) NOT NULL,
