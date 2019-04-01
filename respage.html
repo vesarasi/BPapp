@@ -10,12 +10,12 @@
     <!--connects to mysql dp via php magick-->
     <?php
     $servername = "mysql.metropolia.fi";
-    $username = "Mattii";
+    $username = "mattii";
     $password = "mummola";
-    $dbname = "mattii"
-    $port = "3306"
+    $dbname = "mattii";
+
     // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    $conn = new mysqli($servername, $username, $password,);
     // Check connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);            
@@ -36,33 +36,40 @@
     <div class="col-5 col-s-5">
         <h1>viimeisimmät tulokset</h1>
         <?php
-        $query = 'SELECT `UID` FROM `USER`';
-        $query = 'SELECT * FROM `results mockup`  ORDER BY `time` DESC LIMIT 1';
+        $sql = 'SELECT `UID` FROM `USER`';
+        $sql = 'SELECT * FROM `results mockup`  ORDER BY `time` DESC LIMIT 1';
+        mysql_select_db('test_db');
+        $retval = mysql_query( $sql, $conn );
         echo
-        <ul>
-            <li>sys: $row["sys"].</li>
-            <li>dia:$row["dia"</li>
-            <li>pulse:$row["pulse"]</li>
-            <li>Time:$row["time"]</li>
-        </ul> 
+        if(! $retval ) {
+            die('Could not get data: ' . mysql_error());
+         }
+         
+         while($row = mysql_fetch_array($retval, MYSQL_NUM)) {
+            echo "Systolic :{$row[0]}  <br> ".
+               "Diastolic : {$row[1]} <br> ".
+               "pulse : {$row[2]} <br> ".
+               "--------------------------------<br>";
+
+        mysql_free_result($retval)
+       
        ?>
 
     </div>
     <!--insert new results via php magic. once applied, ask for confirmation before inserting into db-->
     <div class="col-9 col-s-9">
-        <?php
         <form method="post">
                 <label for="sys">Systolic BP</label>
-                <input type="text" name="sys" id="sys">
+                <input type="text" name="sys" id="sys"><br>
                 <label for="dia">Diastolic BP</label>
-                <input type="text" name="dia" id="dia">
+                <input type="text" name="dia" id="dia"><br>
                 <label for="pulse">Pulse</label>
-                <input type="text" name="pulse" id="pulse">
+                <input type="text" name="pulse" id="pulse"><br>
         </form>
         
         //<!--php magick that uses sql magic to create or update the table named after the uses uid for name containing the measurement results. -->
-
-        $sql = "CREATE TABLE $UID (
+        <?php
+        $sql = "UPDATE TABLE $UID (
         `SYS` INT(3) NOT NULL,
         `DIA` INT(3) NOT NULL,
         `pulse` INT(3) NOT NULL, 
