@@ -13,7 +13,7 @@
     $username = 'mattii';
     $password = 'mummola';
     $dbname = 'mattii';
-    $port = '3306';
+    $port = '3036';
 
     $link = mysqli_connect($servername, $username, $password, $dbname, $port);
     
@@ -48,7 +48,7 @@
         <h1>viimeisimmät tulokset</h1>
         <?php
         $sql = 'SELECT * FROM `results mockup`  ORDER BY `time` DESC LIMIT 1';
-        $retval = mysql_query( $sql, $conn );
+        $retval = mysql_query( $sql, $link );
         echo;
         if(! $retval ) {
             die('Could not get data: ' . mysql_error());
@@ -90,4 +90,4 @@
         ?>
     </div>
 </body>
-</html>}
+</html>
