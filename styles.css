@@ -1,29 +1,5 @@
-* {
-    box-sizing: border-box;
-}
-
-.row::after {
-    content: "";
-    clear: both;
-    display: table;
-}
-
 html{
      font-family: Arial, Helvetica, sans-serif;
-}
-
-button{
-    width: 100%;
-    height: auto;
-    border: none;
-    background-color: #00bfff;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 20px;
-    font-weight: bold;
 }
 
 .row{
@@ -36,33 +12,14 @@ button{
 
 .logo h1{
     text-align: center;
-    color: #00bfff;
-}
-.box{
-    border: 1px solid #00bfff;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    padding: 20px;
-}
-.title{
-    margin: auto;
-    padding: 10px;
-    text-align: center;
-    text-transform: uppercase;
-    color: #00bfff;
-    font-size: 20px;
-    font-weight: bold;
+    color: #e60000;
 }
 
-.user-info{
-    padding: 15px;
+.row::after{
+    content: "";
+    display: table;
+    clear: both;
 }
-
-.user-info ul{
-    list-style-type: none;
-    margin: 0;
-    padding: 10px;
-}
-
 
 [class*="col-"] {
     float: center;
@@ -72,6 +29,125 @@ button{
 [class*="col-"] {
     width: 100%;
 }
+
+/* The Overlay (background) */
+.overlay {
+  /* Height & width depends on how you want to reveal the overlay (see JS below) */    
+    height: 100%;
+    width: 0;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    right: 0;
+    top: 0;
+    background-color: rgb(230,0,0); /* fallback color */
+    background-color: rgba(230,0,0, 1); /* w/opacity */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: 0.1s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+
+/* Position the content inside the overlay */
+.overlay-content {
+    position: relative;
+    top: 25%; /* 25% from the top */
+    width: 100%; /* 100% width */
+    text-align: center; /* Centered text/links */
+    margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+}   
+
+/* The navigation links inside the overlay */
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #FFF;
+    text-transform: uppercase;
+    display: block; /* Display block instead of inline */
+    transition: 0.3s; /* Transition effects on hover (color) */
+}
+
+/* Position the close button (top right corner) */
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+.menubtn {
+    color: #e60000;
+    top: 20px;
+    right: 60px;
+    font-size: 60px;
+    float: right;
+    font-weight: bold;
+}
+
+.addresults-btn {
+    background-color: #e60000; 
+    border: none;
+    color: white;
+    width: 90%;
+    height: auto;
+    text-transform: uppercase;
+    padding: 50px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    font-size: 40px;
+    font-weight: bold;
+    margin: 10px auto;
+    border-radius: 12px; 
+    justify-content: center;
+}
+
+.profile-card {
+    position: fixed;
+    width: 78%;
+    height: auto;
+    padding: 40px 50px;
+    margin: auto;
+    left: 6%;
+    background: #e60000;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    color: white;
+    justify-content: center;
+    border-radius: 12px; 
+}
+
+.profile-card .title {
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 5px;
+    text-align: center;
+}
+
+.profile-card img {
+    width: 200px;
+    float: left;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.profile-card h2 {
+    margin: 0 auto;
+    padding: 10px;
+    font-size: 25pt;
+    text-transform: uppercase;
+}
+
+.profile-card ul {
+    list-style-type: none;
+}
+
+.profile-card li {
+    font-size: 18px;
+    padding: 5px;
+}
+
+
+
+/*
 
 @media only screen and (min-width: 600px) {
   /* For tablets: */
@@ -99,3 +175,4 @@ button{
     .col-8 {width: 95%;}
     .col-9 {width: 100%;}
 }
+*/
