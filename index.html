@@ -4,49 +4,51 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="styles.css">
+        <script src="script.js"></script>
+        <title>Homepage</title>
     </head>
     <body>
-    <div class="menu">
-        <ul>
-            <li></li>
-        </ul>
-    </div>
+<!-- The overlay -->
+<div id="myNav" class="overlay">
+
+  <!-- Button to close the overlay navigation -->
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+  <!-- Overlay content -->
+  <div class="overlay-content">
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Clients</a>
+    <a href="#">Contact</a>
+    <a href="#">log out</a>  
+  </div>
+
+</div>
+
+<!-- Use any element to open/show the overlay navigation menu -->
+<span class="menubtn" onclick="openNav()">&#9776;</span>
+
     <div class="row">
         <div class="logo">
         <h1>BPapp</h1>
         </div>
+        
+        <button class="addresults-btn">+ lisää mittaustulos</button><br> 
+        
         <!-- user profile -->
-        <div class="col-9 col-s-9 box user-profile">
-        <div class="title">Käyttäjä</div>
-            <div class="col-3 col-s-3 column user-info">
+        
+        <div class="profile-card">
+            <div class="title">Käyttäjä</div>
+            <img src="0_200.png"/>
+            <h2>Matti Meikäläinen</h2>
             <ul>
-                <li>NIMI:</li>
-                <li>IKÄ:</li>
-                <li></li>
+                <li>IKÄ: </li>
+                <li>PITUUS: </li>
+                <li>PAINO: </li>
             </ul>
-            </div>
-            <div class="col-3 col-s-3 column user-image">
-                <img src="0_200.png">
-            </div>
-        </div>
-        <div class="col-4 col-s-8 two-columns">
-            <!-- Latest measurement info -->
-            <div class="col-2 col-s-2 box column last-measure-info">
-                <div class="title">Viimeisin mittaus</div>
-                <ul>
-                    <li>Päivämäärä</li>
-                    <li>SYS</li>
-                    <li>DIA</li>
-                    <li>PULSSI</li>
-                </ul>
-            </div>
-            <!-- diagram -->
-            <div class="col-2 col-s-2 box column diagram">
-            
-            </div>
-        </div>
+        </div>  
     
-        <button type="button">Lisää mittaustulos</button>
+        <!-- diagram and last measurement here -->
     
     </div>
     </body>
