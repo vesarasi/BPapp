@@ -26,6 +26,7 @@ if($link === false){
 require_once "config.php";
 
 // create variables
+$uid = 
 $username =
 $password =
 $confirm_password = "";
@@ -38,16 +39,8 @@ $confirm_password_err = "";
 if(empty(trim($_POST["username"]))){
     $username_err = "Please enter a username.";
 } else{
-    // Prepare a select statement and a table creation statement
+    // Prepare a select statement 
     $sql = "SELECT uid FROM login WHERE username = ?";
-
-    $sql2 = "CREATE TABLE ? (
-        rid INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-        sys INT NOT NULL,
-        dia INT NOT NULL,
-        pulse INT NOT NULL,
-        time DATETIME NOT NULL"
-    );
     
     if($stmt = mysqli_prepare($link, $sql)){
         // Bind stuff to stuff
@@ -96,10 +89,10 @@ if(empty(trim($_POST["username"]))){
     // Check for fubar before fucking the db
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
         
-        // Prepare an insert statement
+        // Prepare an insert statement and create table statement
         $sql = "INSERT INTO login (username, password) VALUES (?, ?)";
-         
-        if($stmt = mysqli_prepare($link, $sql)){
+
+        if($stmt = mysqli_prepare($link, $sql,)){
 
             // Bind values to stuff
             mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
@@ -112,7 +105,7 @@ if(empty(trim($_POST["username"]))){
 
              // Attempt to execute mysql
              if(mysqli_stmt_execute($stmt)){
-                // Redirect to  login page or home?
+                //redirect to somewhere
                 header("location: #");
                 //incase of fubar
             } else{
