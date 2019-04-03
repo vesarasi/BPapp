@@ -3,69 +3,46 @@
     
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="css/styles.css">
+        <script src="js/script.js"></script>
+        <title>Homepage</title>
     </head>
-
     <body>
-    <!--connects to mysql dp via php magick-->
-    <?php
-    $servername = 'mysql.metropolia.fi';
-    $username = 'mattii';
-    $password = 'mummola';
-    $dbname = 'mattii';
-    $port = '3036';
+<!-- The overlay -->
+<div id="myNav" class="overlay">
 
-    $link = mysqli_connect($servername, $username, $password, $dbname, $port);
-    
-    if (!$link) {
-        echo "Error: Unable to connect to MySQL." . PHP_EOL;
-        echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
-        echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
-        exit;
-    }
-    
-    echo "Success: A proper connection to MySQL was made! The my_db database is great." . PHP_EOL;
-    echo "Host information: " . mysqli_get_host_info($link) . PHP_EOL;
-    
-    mysqli_close($link);
-    ?>
-    
+  <!-- Button to close the overlay navigation -->
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
-    <!-- dropdown menu?-->
-    <div class="menu">
-        <ul>
-            <li></li>
-        </ul>
+  <!-- Overlay content -->
+  <div class="overlay-content">
+    <a href="#">Lisää mittaustulos</a>
+    <a href="#">Viimeisin mittaustulos</a>
+    <a href="#">Diagrammi</a>
+      <br><hr><br>
+    <a href="#">Muokkaa profiilia</a>
+    <a href="#">Asetukset</a>
+    <a href="#">Kirjaudu ulos</a>  
+  </div>
+
+</div>
+
+<!-- Use any element to open/show the overlay navigation menu -->       
+    <div class="navbar">
+        <p>BPapp</p>
+        <span class="menubtn" onclick="openNav()">&#9776;</span>
     </div>
-    <!-- header?-->
-    <div class="row">
+        
+       <div class="row">
         <div class="logo">
-        <h1>BPapp</h1>
+        <h1>Logo tähän</h1>
         </div>
     <!-- previous results. php magic pulls last entry from db -->
 
     <div class="col-5 col-s-5">
         <h1>viimeisimmät tulokset</h1>
 
-        <?php
-        $sql = 'SELECT * FROM `results mockup`  ORDER BY `time` DESC LIMIT 1';
-        $retval = mysql_query( $sql, $link );
-
-        if(! $retval )
-         {
-            die('Could not get data: ' . mysql_error());
-         }
-         
-         while($row = mysql_fetch_array($retval, MYSQL_NUM)) {
-            echo
-               "Systolic :{$row[0]}  <br> ".
-               "Diastolic : {$row[1]} <br> ".
-               "pulse : {$row[2]} <br> ".
-               "--------------------------------<br>";}
-        
-        mysql_free_result($retval)
-        
-       ?>
+       
 
     </div>
     <!--insert new results via php magic. once applied, ask for confirmation before inserting into db-->
@@ -79,17 +56,10 @@
                 <input type="text" name="pulse" id="pulse"><br>
         </form>
         
-        //<!--php magick that uses sql magic to create or update the table named after the uses uid for name containing the measurement results. -->
-        <?php
-        $sql = "UPDATE TABLE $UID (
-        `SYS` INT(3) NOT NULL,
-        `DIA` INT(3) NOT NULL,
-        `pulse` INT(3) NOT NULL, 
-        `TIME` TIMESTAMP
-        )";
-        $sql = "INSERT INTO $UID (SYS, DIA, PULSE, `TIME` )
-        VALUES ($sys ,$dia , $pulse, TIMESTAMP)"; 
-        ?>
+
     </div>
+    <footer>
+        <p>2019 &copy; Databois</p>
+    </footer>    
 </body>
 </html>
