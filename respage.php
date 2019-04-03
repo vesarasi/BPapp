@@ -46,11 +46,13 @@
 
     <div class="col-5 col-s-5">
         <h1>viimeisimmät tulokset</h1>
+
         <?php
         $sql = 'SELECT * FROM `results mockup`  ORDER BY `time` DESC LIMIT 1';
         $retval = mysql_query( $sql, $link );
-        echo;
-        if(! $retval ) {
+
+        if(! $retval )
+         {
             die('Could not get data: ' . mysql_error());
          }
          
@@ -60,9 +62,9 @@
                "Diastolic : {$row[1]} <br> ".
                "pulse : {$row[2]} <br> ".
                "--------------------------------<br>";}
-
+        
         mysql_free_result($retval)
-       
+        
        ?>
 
     </div>
@@ -86,7 +88,7 @@
         `TIME` TIMESTAMP
         )";
         $sql = "INSERT INTO $UID (SYS, DIA, PULSE, `TIME` )
-        VALUES ("sys", ";$dia;", ";$pulse;", TIMESTAMP )"; 
+        VALUES ($sys ,$dia , $pulse, TIMESTAMP)"; 
         ?>
     </div>
 </body>
