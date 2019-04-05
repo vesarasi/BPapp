@@ -3,11 +3,10 @@
 session_start();
  
 // Check if already in n redirect if so
-/*
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     header("location: index.php");
     exit;
-}*/
+}
 // placeholder datab connekt
 require_once "config.php";
  
