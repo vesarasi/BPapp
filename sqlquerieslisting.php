@@ -123,6 +123,8 @@ mysqli_close($link);
 ?>
 
 <-- ------------------------ Login scripts -------------------------- -->
+
+
 <?php
 // make php sessio
 session_start();
@@ -229,4 +231,5 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 ?>
 
 
-<-------- adding results to to db -------------->
+<-------- downloading last pb measure results-------------->
+<-------- uploading  pd measures ------>
