@@ -1,59 +1,36 @@
 <!DOCTYPE html>
 <html>
     
-    <head>
+<head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="styles.css">
-    </head>
+        <link rel="stylesheet" href="css/styles.css">
+        <script src="js/script.js"></script>
+        <title>respage</title>
+</head>
 
-    <body>
-    <!--connects to mysql dp via php magick-->
-    <?php
-    $servername = "localhost";
-    $username = "username";
-    $password = "password";
-            
-    // Create connection
-    $conn = new mysqli($servername, $username, $password);            
-    ?>    
-    <!-- dropdown menu?-->
-    <div class="menu">
-        <ul>
-            <li></li>
-        </ul>
-    </div>
-    <!-- header?-->
-    <div class="row">
-        <div class="logo">
-        <h1>BPapp</h1>
-        </div>
-    <!-- previous results. php magic pulls last entry from db -->
-    <div class="col-5 col-s-5">
-        <h1>viimeisimmät tulokset</h1>
-    </div>
-    <!--insert new results via php magic. once applied, ask for confirmation before inserting into db-->
-    <div class="col-9 col-s-9">
-        <?php
-        <form method="post">
-                <label for="sys">Systolic BP</label>
-                <input type="text" name="sys" id="sys">
-                <label for="dia">Diastolic BP</label>
-                <input type="text" name="dia" id="dia">
-                <label for="pulse">Pulse</label>
-                <input type="text" name="pulse" id="pulse">
-        </form>
-        ?>
-        <!--php magick that uses sql magic to create or update the table named after the uses uid for name containing the measurement results. -->
-        <?php
+<body>
+    
+<!-- The overlay -->
+<div id="myNav" class="overlay">
 
-        $sql = "CREATE TABLE UID (
-        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        SYS INT(3) NOT NULL,
-        DIA INT(3) NOT NULL,
-        pulse INT(3) NOT NULL,
-        reg_date TIMESTAMP
-        )";
-        ?>
-    </div>
+  <!-- Button to close the overlay navigation -->
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+  <!-- Overlay content -->
+  <div class="overlay-content">
+    <a href="#">Lisää mittaustulos</a>
+    <a href="#">Viimeisin mittaustulos</a>
+    <a href="#">Diagrammi</a>
+      <br><hr><br>
+    <a href="#">Muokkaa profiilia</a>
+    <a href="#">Asetukset</a>
+    <a href="#">Kirjaudu ulos</a>  
+  </div>
+
+</div>
+
+<footer>
+<p>2019 &copy; Databois</p>
+</footer>    
+
 </body>
-</html>
