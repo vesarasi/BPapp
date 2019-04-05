@@ -325,4 +325,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
 
 <---- we gon be here often script ----->
+<?php
 }else{header("location:error_page.php ");}
+?>
