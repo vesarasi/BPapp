@@ -232,4 +232,97 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
 <-------- downloading last pb measure results-------------->
+
+
+<?php
+// Check if logged in / redirect to login
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
+    header("location: Bpapp_loginpage.php");
+    exit;
+}
+// placeholder datab connekt
+require_once "config.php";
+
+// create sum variabls. if you change the names, do so in all the files.
+$sys = "";
+$dia = "";
+$pulse = "";
+
+
+//get the last saved values from db based on session user id, sorted based on last result id.
+$randomvar = $_SESSION["uid"];
+$sql = "SELECT sys, dia, pulse FROM `{$randomvar}` ORDER BY rid DESC LIMIT 1";
+//prep the statement
+    if($stmt = mysqli_prepare($link, $sql)){
+        //run it
+        if(mysqli_stmt_execute($stmt)){
+            //store dem datas
+            mysqli_stmt_store_result($stmt);
+            // Check if got sum data
+            if(mysqli_stmt_num_rows($stmt) == 1){                    
+                // Bind results
+                mysqli_stmt_bind_result($stmt, $syd, $dia, $pulse);
+
+            }else{header("location:error_page.php ");}
+           
+        }else{header("location:error_page.php ");}
+
+         // Close statement
+         mysqli_stmt_close($stmt);
+
+    }else{header("location:error_page.php ");}
+
+    // Close connection
+    mysqli_close($link);
+    
+
+?>
+
 <-------- uploading  pd measures ------>
+<?php
+// Check if logged in / redirect to login
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
+    header("location: Bpapp_loginpage.php");
+    exit;
+}
+// placeholder datab connekt
+require_once "config.php";
+
+// create sum variabls. if you change the names, do so in all the files.
+$sys = 
+$dia = 
+$pulse = "";
+
+$sys_err =
+$dia_err =
+$pulse_err = "";
+
+//parsel the form
+if($_SERVER["REQUEST_METHOD"] == "POST")
+{
+     // Validate systolic value
+    if(empty(trim($_POST["sys"]))){
+        $username_err = "insert syspb.";
+    } else{$_SESSION["sys"] = $_POST["sys"];
+}
+{
+    // Validate diastolic value
+    if(empty(trim($_POST["dia"]))){
+        $username_err = "insert syspb.";
+    } else{$_SESSION["dia"] = $_POST["dia"];
+}
+{
+    // Validate pulse value
+    if(empty(trim($_POST["pulse"]))){
+        $username_err = "insert syspb.";
+    } else{$_SESSION["pulse"] = $_POST["pulse"];
+}
+
+
+
+
+?>
+
+
+<---- we gon be here often script ----->
+}else{header("location:error_page.php ");}
