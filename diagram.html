@@ -34,39 +34,50 @@
     </div>
         
        <div class="row">
-        <div class="logo">
-        <h1>Logo tähän</h1>
+         <div class="title">Taulukko</div>
+        
+        <div class="info-content">
+         
+        <div class="tab-navbar">    
+        <button class="tablink" onclick="openPage('Home', this, 'red')" id="defaultOpen">Home</button>
+        <button class="tablink" onclick="openPage('News', this, 'green')" >News</button>
+        <button class="tablink" onclick="openPage('Contact', this, 'blue')">Contact</button>
+        <button class="tablink" onclick="openPage('About', this, 'orange')">About</button>
+        </div>     
+            
+           <div id="Home" class="tabcontent">
+                <h3>Home</h3>
+                <p>Home is where the heart is..</p>
+           </div>
+
+           <div id="News" class="tabcontent">
+               <h3>News</h3>
+               <p>Some news this fine day!</p> 
+           </div>
+
+           <div id="Contact" class="tabcontent">
+                <h3>Contact</h3>
+                <p>Get in touch, or swing by for a cup of coffee.</p>
+           </div>
+
+           <div id="About" class="tabcontent">
+               <h3>About</h3>
+               <p>Who we are and what we do.</p>
+           </div>
         </div>
-        
+           
         <button class="addresults-btn">+ lisää mittaustulos</button><br> 
-        
-        <!-- user profile -->
-        
-        <div class="profile-card">
-            <div class="title">Käyttäjä</div>
-            <img src="img/0_200.png"/>
-            <h2>Matti Meikäläinen</h2>
-            <ul>
-                <li>IKÄ: </li>
-                <li>PITUUS: </li>
-                <li>PAINO: </li>
-            </ul>
-        </div>  
-    
+                            
         <!-- diagram and last measurement here -->
         <div class="wrap">
             <div class="left">
                 <img src="img/0_200.png"/>
                 <p>Viimeisin mittaus</p>
             </div>
-
             <div class="right">
-                <a href="diagram.html">
                 <img src="img/diagram-icon.png"/>
-                Taulukko
-                </a>    
+                <p>Diagrammi</p>
             </div>
-            
         </div>
     
     </div>
