@@ -1,12 +1,13 @@
 <?php
-// make php sessio
 session_start();
+error_reporting(E_ALL); ini_set('display_errors', 1);
  
 // Check if already in n redirect if so
+
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: index.php");
-    exit;
-}
+    header("location: respage.php");
+    exit;}
+
 // placeholder datab connekt
 require_once "config.php";
  
@@ -63,12 +64,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["username"] = $username;
                             
                           //  $randomvar = trim($_SESSION["uid"], "\" \' \`");
-                          $randomvar = $_SESSION["uid"];
-                            $sql = "CREATE TABLE IF NOT EXISTS `{$randomvar}` (rid INT(11) UNIQUE AUTO_INCREMENT, syd INT(3), dia INT(3), pulse INT(3), time DATETIME)";
+                          $randomvar = "t".$_SESSION["uid"];
+                            $sql = "CREATE TABLE IF NOT EXISTS `{$randomvar}` (rid INT(11) UNIQUE AUTO_INCREMENT, sys INT(3), dia INT(3), pulse INT(3), time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP)";
                             if($stmt = mysqli_prepare($link, $sql)){
                                 if(mysqli_stmt_execute($stmt)){
                                 
-                                }else{die;
+                                }else{echo "paskamesta";
                                 }
 
 
