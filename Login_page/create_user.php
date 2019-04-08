@@ -116,18 +116,7 @@ mysqli_close($link);
 		<div id="loginPage">
 			<div id="headline"><p>Welcome to BPapp <br> </p></div>
             <fieldset>
-            <form action="<?php $_PHP_SELF ?>" method="POST">
-                Create new user<br>
-                <br>
-            Username <br> <input type="text" name="username">
-            <br> 
-            <br>
-            Password <br> <input type="password" name="confirm_password">
-            <br> 
-            <br>
-            Password again <br> <input type="password" name="pwd">
-            <input type="hidden" name="form_submitted" value="1" />
-            <br><form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
                 <label>Username</label>
                 <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
@@ -148,10 +137,6 @@ mysqli_close($link);
                 <input type="reset" class="btn btn-default" value="Reset">
             </div>
             <p>Already have an account? <a href="BPapp_loginpage.php">Login here</a>.</p>
-        </form>
-            <br>
-            <input type="submit" value="Create profile"><br>
-            </fieldset>
         </form>
 		</div>
 	</body>

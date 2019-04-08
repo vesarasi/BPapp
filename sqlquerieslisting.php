@@ -92,7 +92,7 @@ if(empty(trim($_POST["username"]))){
         // Prepare an insert statement and create table statement
         $sql = "INSERT INTO login (username, password) VALUES (?, ?)";
 
-        if($stmt = mysqli_prepare($link, $sql,)){
+        if($stmt = mysqli_prepare($link, $sql)){
 
             // Bind values to stuff
             mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
@@ -105,9 +105,12 @@ if(empty(trim($_POST["username"]))){
 
              // Attempt to execute mysql
              if(mysqli_stmt_execute($stmt)){
+                $sql = "SELECT uid FROM login WHERE (username) VALUES (?)" ;
+ 
                 //redirect to somewhere
                 header("location: #");
                 //incase of fubar
+                }
             } else{
                 echo "oops! you broke it.";
             }
@@ -116,7 +119,7 @@ if(empty(trim($_POST["username"]))){
         mysqli_stmt_close($stmt);    
 // Close connection?
 mysqli_close($link);
-  
+    }
 ?>
 
 <-- ------------------------ Login scripts -------------------------- -->
@@ -128,17 +131,16 @@ session_start();
  
 // Check if already in n redirect if so
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: #");
+    header("location: index.php");
     exit;
 }
- 
 // placeholder datab connekt
 require_once "config.php";
  
 // create variables
 $username = $password = "";
 $username_err = $password_err = "";
- 
+$randomvar = "";
 // get data from form
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
@@ -183,12 +185,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             session_start();
                             
                             // Store data in session variables
-                            $_SESSION["loggedin"] = true;
+                            $_SESSION["loggedin"] = true; 
                             $_SESSION["uid"] = $uid;
-                            $_SESSION["username"] = $username;                            
+                            $_SESSION["username"] = $username;
+                            
+                          //  $randomvar = trim($_SESSION["uid"], "\" \' \`");
+                          $randomvar = $_SESSION["uid"];
+                            $sql = "CREATE TABLE IF NOT EXISTS `{$randomvar}` (rid INT(11) UNIQUE AUTO_INCREMENT, syd INT(3), dia INT(3), pulse INT(3), time DATETIME)";
+                            if($stmt = mysqli_prepare($link, $sql)){
+                                if(mysqli_stmt_execute($stmt)){
+                                
+                                }else{die;
+                                }
+
+
+                            header("location: ");
+                            }                      
                             
                             // Redirect user to index page
-                            header("location: #");
+                            header("location: ");
                         } else{
                             //error if pw is wrong
                             $password_err = "The password you entered was not valid.";
@@ -211,7 +226,139 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Close connection
     mysqli_close($link);
 }
+
+    
 ?>
 
 
-<-------- adding results to to db -------------->
+<-------- downloading last pb measure results-------------->
+
+
+<?php
+// Check if logged in / redirect to login
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
+    header("location: Bpapp_loginpage.php");
+    exit;
+}
+// placeholder datab connekt
+require_once "config.php";
+
+// create sum variabls. if you change the names, do so in all the files.
+$sys = "";
+$dia = "";
+$pulse = "";
+
+
+//get the last saved values from db based on session user id, sorted based on last result id.
+$randomvar = $_SESSION["uid"];
+$sql = "SELECT sys, dia, pulse FROM `{$randomvar}` ORDER BY rid DESC LIMIT 1";
+//prep the statement
+    if($stmt = mysqli_prepare($link, $sql)){
+        //run it
+        if(mysqli_stmt_execute($stmt)){
+            //store dem datas
+            mysqli_stmt_store_result($stmt);
+            // Check if got sum data
+            if(mysqli_stmt_num_rows($stmt) == 1){                    
+                // Bind results
+                mysqli_stmt_bind_result($stmt, $syd, $dia, $pulse);
+
+            }else{header("location:error_page.php ");}
+           
+        }else{header("location:error_page.php ");}
+
+         // Close statement
+         mysqli_stmt_close($stmt);
+
+    }else{header("location:error_page.php ");}
+
+    // Close connection
+    mysqli_close($link);
+    
+
+?>
+
+<-------- uploading  pd measures ------>
+<?php
+// Check if logged in / redirect to login
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
+    header("location: Bpapp_loginpage.php");
+    exit;
+}
+// placeholder datab connekt
+require_once "config.php";
+
+// create sum variabls. if you change the names, do so in all the files.
+$sys = 
+$dia = 
+$pulse = "";
+
+$sys_err =
+$dia_err =
+$pulse_err = "";
+
+//parsel the form
+if($_SERVER["REQUEST_METHOD"] == "POST")
+{
+     // Validate systolic value
+    if(empty(trim($_POST["sys"]))){
+        $username_err = "insert syspb.";
+    } else{$_SESSION["sys"] = $_POST["sys"];
+}
+{
+    // Validate diastolic value
+    if(empty(trim($_POST["dia"]))){
+        $username_err = "insert diapb.";
+    } else{$_SESSION["dia"] = $_POST["dia"];
+}
+{
+    // Validate pulse value
+    if(empty(trim($_POST["pulse"]))){
+        $username_err = "insert pulse.";
+    } else{$_SESSION["pulse"] = $_POST["pulse"];
+}
+
+
+
+
+?>
+
+
+<---- we gon be here often script ----->
+<?php
+}else{header("location:error_page.php ");}
+?>
+
+<----- ---->
+            <!-- insert results 
+        
+        <div class="profile-card">
+            <div class="title">results</div>
+            <h2>syötä arvot</h2>
+            <div id="results">
+            <fieldset>
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <div class="form-group <?php echo (!empty($sys_err)) ? 'has-error' : ''; ?>">
+                <label>sys</label>
+                <input type="sys" name="sys" class="form-control" value="<?php echo $sys; ?>">
+                <span class="help-block"><?php echo $sys_err; ?></span>
+            </div>    
+            <div class="form-group <?php echo (!empty($dia_err)) ? 'has-error' : ''; ?>">
+                <label>dia</label>
+                <input type="dia" name="dia" class="form-control">
+                <span class="help-block"><?php echo $dia_err; ?></span>
+            </div>
+            <div class="form-group <?php echo (!empty($pulse_err)) ? 'has-error' : ''; ?>">
+                <label>pulse</label>
+                <input type="pulse" name="pulse" class="form-control">
+                <span class="help-block"><?php echo $pulse_err; ?></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="results">
+            </div>
+            </form>
+            </fieldset>
+            </div>
+		    </div>
+
+-->
