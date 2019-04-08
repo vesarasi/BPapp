@@ -3,8 +3,8 @@
     
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="styles.css">
-        <script src="script.js"></script>
+        <link rel="stylesheet" href="css/styles.css">
+        <script src="js/script.js"></script>
         <title>Homepage</title>
     </head>
     <body>
@@ -16,21 +16,26 @@
 
   <!-- Overlay content -->
   <div class="overlay-content">
-    <a href="#">About</a>
-    <a href="#">Services</a>
-    <a href="#">Clients</a>
-    <a href="#">Contact</a>
-    <a href="#">log out</a>  
+    <a href="#">Lisää mittaustulos</a>
+    <a href="#">Viimeisin mittaustulos</a>
+    <a href="#">Diagrammi</a>
+      <br><hr><br>
+    <a href="#">Muokkaa profiilia</a>
+    <a href="#">Asetukset</a>
+    <a href="#">Kirjaudu ulos</a>  
   </div>
 
 </div>
 
-<!-- Use any element to open/show the overlay navigation menu -->
-<span class="menubtn" onclick="openNav()">&#9776;</span>
-
-    <div class="row">
+<!-- Use any element to open/show the overlay navigation menu -->       
+    <div class="navbar">
+        <p>BPapp</p>
+        <span class="menubtn" onclick="openNav()">&#9776;</span>
+    </div>
+        
+       <div class="row">
         <div class="logo">
-        <h1>BPapp</h1>
+        <h1>Logo tähän</h1>
         </div>
         
         <button class="addresults-btn">+ lisää mittaustulos</button><br> 
@@ -39,7 +44,7 @@
         
         <div class="profile-card">
             <div class="title">Käyttäjä</div>
-            <img src="0_200.png"/>
+            <img src="img/0_200.png"/>
             <h2>Matti Meikäläinen</h2>
             <ul>
                 <li>IKÄ: </li>
@@ -49,6 +54,19 @@
         </div>  
     
         <!-- diagram and last measurement here -->
+        <div class="wrap">
+            <div class="left">
+                <img src="img/0_200.png"/>
+                <p>Viimeisin mittaus</p>
+            </div>
+            <div class="right">
+                <img src="img/diagram-icon.png"/>
+                <p>Diagrammi</p>
+            </div>
+        </div>
     
     </div>
+    <footer>
+        <p>2019 &copy; Databois</p>
+    </footer>    
     </body>
