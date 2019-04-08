@@ -308,13 +308,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 {
     // Validate diastolic value
     if(empty(trim($_POST["dia"]))){
-        $username_err = "insert syspb.";
+        $username_err = "insert diapb.";
     } else{$_SESSION["dia"] = $_POST["dia"];
 }
 {
     // Validate pulse value
     if(empty(trim($_POST["pulse"]))){
-        $username_err = "insert syspb.";
+        $username_err = "insert pulse.";
     } else{$_SESSION["pulse"] = $_POST["pulse"];
 }
 
@@ -328,3 +328,37 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 <?php
 }else{header("location:error_page.php ");}
 ?>
+
+<----- ---->
+            <!-- insert results 
+        
+        <div class="profile-card">
+            <div class="title">results</div>
+            <h2>syötä arvot</h2>
+            <div id="results">
+            <fieldset>
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <div class="form-group <?php echo (!empty($sys_err)) ? 'has-error' : ''; ?>">
+                <label>sys</label>
+                <input type="sys" name="sys" class="form-control" value="<?php echo $sys; ?>">
+                <span class="help-block"><?php echo $sys_err; ?></span>
+            </div>    
+            <div class="form-group <?php echo (!empty($dia_err)) ? 'has-error' : ''; ?>">
+                <label>dia</label>
+                <input type="dia" name="dia" class="form-control">
+                <span class="help-block"><?php echo $dia_err; ?></span>
+            </div>
+            <div class="form-group <?php echo (!empty($pulse_err)) ? 'has-error' : ''; ?>">
+                <label>pulse</label>
+                <input type="pulse" name="pulse" class="form-control">
+                <span class="help-block"><?php echo $pulse_err; ?></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="results">
+            </div>
+            </form>
+            </fieldset>
+            </div>
+		    </div>
+
+-->
