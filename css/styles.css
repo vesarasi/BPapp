@@ -40,9 +40,22 @@ body {
     font-size: 60px;
     float: right;
     font-weight: bold;
-    padding: 1px 15px;
-    border: 5px solid #9c031e;
-    border-radius: 12px;
+    padding: 15px 15px;
+   /* border: 8px solid #9c031e;
+    border-radius: 12px; */
+}
+
+.navbar .return-btn {
+    color: #9c031e;
+    margin: 15px 0 0 15px;
+    font-size: 50px;
+    float: left;
+    padding: 15px 15px;
+    position: absolute;
+}
+
+.navbar a {
+    text-decoration: none;
 }
 
 .addresults-btn {
@@ -159,11 +172,12 @@ body {
 }
 
 .profile-card .title {
-    font-size: 22px;
+    font-size: 26px;
     font-weight: bolder;
     text-transform: uppercase;
     padding: 5px;
     text-align: center;
+    color: white;
 }
 
 .profile-card img {
@@ -232,7 +246,6 @@ body {
     width: 100%;
     text-decoration: none;
     font-size: 24px;
-    font-weight: bolder;
     text-transform: uppercase;
     color: white;
     display: block;
@@ -308,12 +321,14 @@ info-content{
     background-color: white;
     color: #9c031e;
     border-radius: 12px 12px 0 0;
+    font-weight: bold;
 }
 
 .tablink:active {
     background-color: white;
     color: #9c031e;
     border-radius: 12px 12px 0 0;
+    font-weight: bold;
 }
 
 /* Style the tab content (and add height:100% for full page content) */
@@ -329,6 +344,39 @@ info-content{
     border-radius: 12px
 }
 
+.setups {
+    margin: auto;
+    width: 100%;
+    height: 100%;
+}
+
+.setups ul {
+    color: #9c031e;
+    font-size: 25px;
+    background-color: white;
+    width: 100%;
+    list-style-type: none;
+    margin: 10px 0;
+    padding: 10px 0;
+}
+
+.setups li {
+    width: 95%;
+    margin: auto;
+    border-style: solid;
+    border-width: 0 0 2px 0;
+    border-color: #9c031e;
+    padding: 25px 5px;
+}
+
+.setups li i{
+    float: right;
+}
+
+.setups a {
+    text-decoration: none;
+    color: #9c031e;
+}
 
 @media only screen and (min-width: 600px) {
   /* For tablets: */

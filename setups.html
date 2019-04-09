@@ -23,7 +23,7 @@
     <a href="diagram.html">Taulukko</a>
       <br><hr><br>
     <a href="#">Muokkaa profiilia</a>
-    <a href="setups.html">Asetukset</a>
+    <a href="#">Asetukset</a>
     <a href="#">Kirjaudu ulos</a>   
   </div>
 
@@ -31,48 +31,23 @@
 
 <!-- Use any element to open/show the overlay navigation menu -->       
     <div class="navbar">
+    <a href="#" onclick="history.go(-1)" class="return-btn"><i class="fas fa-arrow-left"></i></a>    
         <p>BPapp</p>
-        <span class="menubtn" onclick="openNav()"><i class="fas fa-bars"></i></span>
+        
     </div>
         
        <div class="row">
-        <div class="logo">
-        <h1>Logo tähän</h1>
-        </div>
+           <div class=setups>
+                <ul>
+                    <li><a href="#">Coffee <i class="fas fa-angle-right"></i></a></li>
+                    <li><a href="#">Tea <i class="fas fa-angle-right"></i></a></li>
+                    <li><a href="#">Coca Cola <i class="fas fa-angle-right"></i></a></li>
+                </ul>
+           </div>
         
-        <button class="addresults-btn">+ lisää mittaustulos</button><br> 
-        
-        <!-- user profile -->
-        
-        <div class="profile-card">
-            <div class="title">Käyttäjä</div>
-            <img src="img/0_200.png"/>
-            <h2>Matti Meikäläinen</h2>
-            <ul>
-                <li>IKÄ: </li>
-                <li>PITUUS: </li>
-                <li>PAINO: </li>
-            </ul>
-        </div>  
-    
-        <!-- diagram and last measurement here -->
-        <div class="wrap">
-            <div class="left">
-                <img src="img/0_200.png"/>
-                <p>Viimeisin mittaus</p>
-            </div>
-
-            <div class="right">
-                <a href="diagram.html">
-                <img src="img/diagram-icon.png"/>
-                <p>Taulukko</p>
-                </a>    
-            </div>
-            
         </div>
     
-    </div>
-    <footer>
+       <footer>
         <p>2019 &copy; Databois</p>
     </footer>    
     </body>

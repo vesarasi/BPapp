@@ -8,7 +8,7 @@ function closeNav() {
   document.getElementById("myNav").style.width = "0%";
 }
 
-function openPage(pageName, elmnt,) {
+function openPage(pageName, elmnt) {
   // Hide all elements with class="tabcontent" by default */
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
@@ -24,6 +24,7 @@ function openPage(pageName, elmnt,) {
 
   // Show the specific tab content
   document.getElementById(pageName).style.display = "block";
+  evt.currentTarget.className += " active";    
 
   // Add the specific color to the button used to open the tab content
   //elmnt.style.backgroundColor = color;

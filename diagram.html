@@ -4,6 +4,7 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
         <script src="js/script.js"></script>
         <title>Homepage</title>
     </head>
@@ -16,12 +17,13 @@
 
   <!-- Overlay content -->
   <div class="overlay-content">
+    <a href="index.html">Etusivu</a>
     <a href="#">Lisää mittaustulos</a>
     <a href="#">Viimeisin mittaustulos</a>
-    <a href="#">Diagrammi</a>
+    <a href="diagram.html">Taulukko</a>
       <br><hr><br>
     <a href="#">Muokkaa profiilia</a>
-    <a href="#">Asetukset</a>
+    <a href="setups.html">Asetukset</a>
     <a href="#">Kirjaudu ulos</a>  
   </div>
 
@@ -29,8 +31,9 @@
 
 <!-- Use any element to open/show the overlay navigation menu -->       
     <div class="navbar">
+        <a href="#" onclick="history.go(-1)" class="return-btn"><i class="fas fa-arrow-left"></i></a> 
         <p>BPapp</p>
-        <span class="menubtn" onclick="openNav()">&#9776;</span>
+        <span class="menubtn" onclick="openNav()"><i class="fas fa-bars"></i></span>
     </div>
         
        <div class="row">
@@ -76,7 +79,7 @@
             </div>
             <div class="right">
                 <img src="img/diagram-icon.png"/>
-                <p>Diagrammi</p>
+                <p>Taulukko</p>
             </div>
         </div>
     
