@@ -62,22 +62,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["loggedin"] = true; 
                             $_SESSION["uid"] = $uid;
                             $_SESSION["username"] = $username;
-                            
-                          //  $randomvar = trim($_SESSION["uid"], "\" \' \`");
-                          $randomvar = "t".$_SESSION["uid"];
-                            $sql = "CREATE TABLE IF NOT EXISTS `{$randomvar}` (rid INT(11) UNIQUE AUTO_INCREMENT, sys INT(3), dia INT(3), pulse INT(3), time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP)";
-                            if($stmt = mysqli_prepare($link, $sql)){
-                                if(mysqli_stmt_execute($stmt)){
-                                
-                                }else{echo "paskamesta";
-                                }
-
-
-                            header("location: ");
-                            }                      
-                            
-                            // Redirect user to index page
-                            header("location: ");
+                                                                           
+                            // Redirect user to index page-------------------------------------------------
+                            header("location: index.php");
                         } else{
                             //error if pw is wrong
                             $password_err = "The password you entered was not valid.";
@@ -85,7 +72,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     }
                 } else{
                     // error if user is wrong
-                    $username_err = "No account found with that username.";
+                    $username_err = "Login failed.";
                 }
                 //incase of fubar
             } else{
