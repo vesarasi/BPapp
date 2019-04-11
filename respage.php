@@ -24,7 +24,7 @@ $pulse_err = "";
 //get the last saved values from db based on session user id, sorted based on last result id.
 
 $uid = $_SESSION["uid"];
-$sql = "SELECT sys, dia, pulse, time FROM results WHERE uid = ? ORDER BY rid DESC LIMIT 1 VALUE (?)";
+$sql = "SELECT sys, dia, pulse, time FROM results WHERE uid = ? ORDER BY rid DESC LIMIT 1";
 //prep the statement
 if($stmt = mysqli_prepare($link, $sql)){
   mysqli_stmt_bind_param($stmt, "i",$uid);
@@ -99,6 +99,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
         <script src="js/script.js"></script>
         <title>respage</title>
 </head>
@@ -113,54 +114,59 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
   <!-- Overlay content -->
   <div class="overlay-content">
+    <a href="index.php">Etusivu</a>
     <a href="#">Lisää mittaustulos</a>
-    <a href="#">Viimeisin mittaustulos</a>
-    <a href="#">Diagrammi</a>
+    <a href="respage.php">Viimeisin mittaustulos</a>
+    <a href="diagram.html">Taulukko</a>
       <br><hr><br>
     <a href="#">Muokkaa profiilia</a>
-    <a href="#">Asetukset</a>
-    <a href="#">Kirjaudu ulos</a>  
+    <a href="setups.html">Asetukset</a>
+    <a href="#">Kirjaudu ulos</a> 
   </div>
 
 </div>
+
+    <div class="navbar">
+        <a href="#" onclick="history.go(-1)" class="return-btn"><i class="fas fa-arrow-left"></i></a> 
+        <p>BPapp</p>
+        <span class="menubtn" onclick="openNav()"><i class="fas fa-bars"></i></span>
+    </div>
+        
 <div class="row">
-        <div class="logo">
-        <h1>Logo tähän</h1>
+       
+        <div class="result-card">
+            <div class="title">viimeisimmät tulokset</div>
+            <div class="lresults">
+                <ul>
+                    <li><label>Sys</label><br>   <span><?php echo $sysl;?></span></li>
+                    <li><label>Dia</label><br>   <span><?php echo $dial; ?></span></li>
+                    <li><label>Pulssi</label><br> <span><?php echo $pulsel; ?></span></li>
+                    <li><label>mittausaika</label> <br> <span class="time"><?php echo $timel; ?></span> </li>
+                </ul>
+            </div>
         </div>
-
-
-        <div class="profile-card">
-          <div class="title">latest results</div>
-          <div id="lresults">
-            <ul>
-                <li>Sys:   <?php echo $sysl;?> </li>
-                <li>Dia:   <?php echo $dial; ?></li>
-                <li>Pulse: <?php echo $pulsel; ?></li>
-                <li>time measured: <br> <?php echo $timel; ?> </li>
-            </ul>
-            <div class="profile-card">
-            <div class="title">results</div>
-            <h2>syötä arvot</h2>
-            <div id="results">
+            <div class="input-card">
+            <div class="title">syötä arvot</div>
+            <div class="results">
             <fieldset>
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group <?php echo (!empty($sys_err)) ? 'has-error' : ''; ?>">
-                <label>sys</label>
+                <label>sys</label><br>
                 <input type="sys" name="sys" class="form-control">
                 <span class="help-block"><?php echo $sys_err; ?></span>
             </div>    
             <div class="form-group <?php echo (!empty($dia_err)) ? 'has-error' : ''; ?>">
-                <label>dia</label>
+                <label>dia</label><br>
                 <input type="dia" name="dia" class="form-control">
                 <span class="help-block"><?php echo $dia_err; ?></span>
             </div>
             <div class="form-group <?php echo (!empty($pulse_err)) ? 'has-error' : ''; ?>">
-                <label>pulse</label>
+                <label>pulssi</label><br>
                 <input type="pulse" name="pulse" class="form-control">
                 <span class="help-block"><?php echo $pulse_err; ?></span>
             </div>
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="results">
+                <input type="submit" class="btn btn-primary" value="tallenna">
             </div>
             </form>
             </fieldset>
