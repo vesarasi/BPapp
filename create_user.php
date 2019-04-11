@@ -135,7 +135,7 @@ mysqli_close($link);
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Submit">
             </div>
-            <p>Already have an account? <a href="BPapp_loginpage.php">Login here</a>.</p>
+            <p>Already have an account? <a href="login_page.php">Login here</a>.</p>
         </form>
 		</div>
 	</body>
