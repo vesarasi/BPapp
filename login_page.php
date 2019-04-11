@@ -2,10 +2,10 @@
 session_start();
 error_reporting(E_ALL); ini_set('display_errors', 1);
  
-// Check if already in n redirect if so
+// Check if already in n redirect to index if so
 
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: respage.php");
+    header("location: index.php");
     exit;}
 
 // placeholder datab connekt
