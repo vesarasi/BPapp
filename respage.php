@@ -11,7 +11,10 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false){
 require_once "config.php";
 
 // create sum variabls. if you change the names, do so in all the files.
-
+$sysl = "";
+$dial = "";
+$pulsel = "";
+$timel = "";
 
 $sys_err =
 $dia_err =
@@ -19,10 +22,11 @@ $pulse_err = "";
 
 //get the last saved values from db based on session user id, sorted based on last result id.
 
-$randomvar = "t".$_SESSION["uid"];
-$sql = "SELECT sys, dia, pulse, time FROM `{$randomvar}` ORDER BY rid DESC LIMIT 1";
+$uid = $_SESSION["uid"];
+$sql = "SELECT sys, dia, pulse, time FROM results WHERE uid = ? ORDER BY rid DESC LIMIT 1 VALUE (?)";
 //prep the statement
 if($stmt = mysqli_prepare($link, $sql)){
+  mysqli_stmt_bind_param($stmt, "i",$uid);
         //run it
         if(mysqli_stmt_execute($stmt)){
             //store dem datas
@@ -71,10 +75,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $dia = $_SESSION["dia"] ;
     $pulse = $_SESSION["pulse"];
 
-    $sql2 = "INSERT INTO `{$randomvar}` (sys, dia, pulse) VALUES (?, ?, ?)";
+    $sql2 = "INSERT INTO results (uid, sys, dia, pulse) VALUES (?, ?, ?, ?)";
+    $uid = $_SESSION["uid"];
 
     if($stmt = mysqli_prepare($link, $sql2)){
-      mysqli_stmt_bind_param($stmt, "iii", $sys, $dia, $pulse);
+      mysqli_stmt_bind_param($stmt, "iiii", $uid, $sys, $dia, $pulse);
     }else{echo "1";
     }
     if(mysqli_stmt_execute($stmt)){
