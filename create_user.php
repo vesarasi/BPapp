@@ -106,7 +106,7 @@ mysqli_close($link);
  <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<link rel="stylesheet" href="style.css" type="text/css">
+		<link rel="stylesheet" href="css/styles.css" type="text/css">
 		<title>BP App Login</title>
 		<meta charset="UTF-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
