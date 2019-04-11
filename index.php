@@ -17,6 +17,7 @@ require_once "config.php";
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
         <script src="js/script.js"></script>
         <title>Homepage</title>
     </head>
@@ -29,13 +30,14 @@ require_once "config.php";
 
   <!-- Overlay content -->
   <div class="overlay-content">
+    <a href="index.php">Etusivu</a>
     <a href="#">Lisää mittaustulos</a>
-    <a href="#">Viimeisin mittaustulos</a>
-    <a href="#">Diagrammi</a>
+    <a href="respage.php">Viimeisin mittaustulos</a>
+    <a href="diagram.html">Taulukko</a>
       <br><hr><br>
     <a href="#">Muokkaa profiilia</a>
-    <a href="#">Asetukset</a>
-    <a href="#">Kirjaudu ulos</a>  
+    <a href="setups.html">Asetukset</a>
+    <a href="#">Kirjaudu ulos</a> 
   </div>
 
 </div>
@@ -69,14 +71,16 @@ require_once "config.php";
         <!-- diagram and last measurement here -->
         <div class="wrap">
             <div class="left">
+                <a href="respage.php">
                 <img src="img/0_200.png"/>
                 <p>Viimeisin mittaus</p>
+                </a>
             </div>
 
             <div class="right">
                 <a href="diagram.html">
                 <img src="img/diagram-icon.png"/>
-                Taulukko
+                <p>Taulukko</p>
                 </a>    
             </div>
             
