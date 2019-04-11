@@ -24,7 +24,7 @@ $pulse_err = "";
 //get the last saved values from db based on session user id, sorted based on last result id.
 
 $uid = $_SESSION["uid"];
-$sql = "SELECT sys, dia, pulse, time FROM results WHERE uid = ? ORDER BY rid DESC LIMIT 1 VALUE (?)";
+$sql = "SELECT sys, dia, pulse, time FROM results WHERE uid = ? ORDER BY rid DESC LIMIT 1";
 //prep the statement
 if($stmt = mysqli_prepare($link, $sql)){
   mysqli_stmt_bind_param($stmt, "i",$uid);
@@ -160,7 +160,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <span class="help-block"><?php echo $pulse_err; ?></span>
             </div>
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="results">
+                <input type="submit" class="btn btn-primary" value="results" onClick="this.form.reset()">
             </div>
             </form>
             </fieldset>

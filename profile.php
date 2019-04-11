@@ -46,9 +46,9 @@ if($stmt = mysqli_prepare($link, $sql)){
 }else{echo "3";}
 
 
-
-$array = "";
-$sql = "INSERT INTO udata ( `{&array}` ) ";
+$
+$col = "";
+$sql = "UPDATE udata SET uid = $uid , $col =   WHERE uid = $uid";
 ?>
 
 
@@ -59,7 +59,8 @@ $sql = "INSERT INTO udata ( `{&array}` ) ";
         <meta charset="utf-8">
         <link rel="stylesheet" href="css/styles.css">
         <script src="js/script.js"></script>
-        <title>respage</title>
+        
+        <title>profile</title>
 </head>
 
 <body>
@@ -93,23 +94,44 @@ $sql = "INSERT INTO udata ( `{&array}` ) ";
           <div id="lresults">
             <ul>
                 <li>username: <?php echo $uname;?> </li>
-                <li>name: <?php if(isset($fname) xor $lname === true){echo $fname." ".$lname;}else{echo "not set";}  ?></li>
-                <li>Email: <?php if(isset($email) == true){echo $email;}else{echo "not set";}  ?> </li>
-                <li>age: <?php if(isset($age) == true){echo $age;}else{echo "not set";} ?> </li>
-                <li>height: <?php if(isset($height) == true){echo $height;}else{echo "not set";}  ?> </li>
-                <li>weight: <?php if(isset($weight) == true){echo $weight;}else{echo "not set";}  ?> </li>
-                <li>Change password <br> <?php echo $a; ?> </li>
+                <li>name: <?php if(isset($fname) xor $lname === true){echo $fname." ".$lname;}else{echo "not set";}  ?>
+                  <button class="open-button" onclick="openForm()">Change</button>
+
+                  <div class="form-popup" id="myForm">
+                    <form action="/action_page.php" class="form-container">
+                      <h1>Name</h1>
+
+                      <label for="email"><b>first name</b></label>
+                      <input type="text" placeholder="<?php if(isset($fname)== true){echo $fname;}else{echo "first name";}  ?>" name="fname">
+                      <label for="email"><b>first name</b></label>
+                      <input type="text" placeholder="<?php if(isset($lname)== true){echo $lname;}else{echo "last name";}  ?>" name="lname">
+
+                      <button type="submit" class="btn">Apply</button>
+                      <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                    </form>
+                  </div>
+              
+              
+              
+                </li>
+                <li>Email: <?php if(isset($email) == true){echo $email;}else{echo "not set";}  ?>
+
+                </li>
+                <li>age: <?php if(isset($age) == true){echo $age;}else{echo "not set";} ?> 
+
+                </li>
+                <li>height: <?php if(isset($height) == true){echo $height;}else{echo "not set";}  ?> 
+
+                </li>
+                <li>weight: <?php if(isset($weight) == true){echo $weight;}else{echo "not set";}  ?> 
+
+                </li>
+                <li>Change password <br> <?php echo $a; ?> 
+
+                </li>
             </ul>
-            <div class="profile-card">
-            <div class="title">results</div>
-            <h2></h2>
-            <div id="results">
-            <fieldset>
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            </form>
-            </fieldset>
-            </div>
-		    </div>
+        </div>
+      </div>
 <footer>
 <p>2019 &copy; Databois</p>
 </footer>    
