@@ -1,10 +1,12 @@
 <?php
 session_start();
+/*
 // redirects to login page if there is no logged in session.
 if(isset($_SESSION["loggedin"]) or $_SESSION["loggedin"] == false){
     header("location: login_page.php");
     exit;
 }
+*/
 // placeholder datab connekt
 require_once "config.php";
 ?>
