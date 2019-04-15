@@ -73,11 +73,10 @@ body {
     display: flex;
     font-size: 40px;
     font-weight: bold;
-    margin: 10px auto;
+    margin: 30px auto;
     border-radius: 12px; 
     justify-content: center;
 }
-
 
 .row {
     margin: auto;
@@ -205,6 +204,10 @@ body {
     padding: 5px;
 }
 
+.profile-card i {
+    color: #9c031e;
+}
+
 .result-card {
     width: 80%;
     height: auto;
@@ -301,7 +304,7 @@ body {
     background: none;
     border: 5px solid white;
     border-radius: 12px;
-    padding: 25px 30px;
+    padding: 20px 30px;
     color: white;
     font-size: 30px;
     font-weight: bold;
@@ -337,11 +340,89 @@ body {
     color: white;
 }
 
+.input-card fieldset{
+    border-style: none;
+}
+
+.login {
+    margin: 20px 0;
+    width: 90%;
+    text-align: center;
+    padding: 15px
+}
+
+.login .form-group {
+    padding: 10px;
+    text-align: center;
+}
+
+.login .form-group label {
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.login .form-group .form-control {
+    border: none;
+    border-bottom: 2px solid white;
+    background: none;
+    padding: 12px 20px;
+    margin: 8px 0;
+    color: white;
+    font-size: 18px;
+    width: 90%;
+    text-align: center;
+}
+
+.login .form-group .form-control:focus {
+    border: none;
+    border-bottom: 2px solid white;
+    background: none;
+}
+
+.login .form-group .btn-primary {
+    width: 70%;
+    background: none;
+    border: 5px solid white;
+    border-radius: 12px;
+    padding: 20px 30px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 10px 0;
+}
+
+.login .form-group .btn-primary:active {
+    background-color: white;
+    color: #9c031e;
+    border-style: none;
+}
+
+.navi {
+    width: 70%;
+    background: none;
+    border: 5px solid white;
+    border-radius: 12px;
+    padding: 20px 30px;
+    color: white;
+    font-size: 18px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.headline {
+    text-align: center;
+    font-size: 25px;
+    color: #9c031e;
+    font-weight: bolder;
+    margin 20px 0;
+}
+
 .wrap {
     display: flex;
     justify-content: center; 
     width: 90%;
-    margin: 30px auto; 
+    margin: 30px auto;
 }
 
 .left, .right {
@@ -364,6 +445,13 @@ body {
     margin:auto;
     background-color: white;
     border: 10px solid white; 
+}
+
+.left i , .right i {
+    font-size: 250px;
+    display:block;
+    margin:auto;
+    
 }
 
 .left p, .right p {
@@ -506,6 +594,7 @@ info-content{
     text-decoration: none;
     color: #9c031e;
 }
+
 
 @media only screen and (min-width: 600px) {
   /* For tablets: */

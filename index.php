@@ -45,7 +45,7 @@ require_once "config.php";
 <!-- Use any element to open/show the overlay navigation menu -->       
     <div class="navbar">
         <p>BPapp</p>
-        <span class="menubtn" onclick="openNav()">&#9776;</span>
+        <span class="menubtn" onclick="openNav()"><i class="fas fa-bars"></i></span>
     </div>
         
        <div class="row">
@@ -53,7 +53,8 @@ require_once "config.php";
         <h1>Logo tähän</h1>
         </div>
         
-        <button class="addresults-btn">+ lisää mittaustulos</button><br> 
+        <button class="addresults-btn">+ lisää mittaustulos</button> 
+        
         
         <!-- user profile -->
         
@@ -72,14 +73,14 @@ require_once "config.php";
         <div class="wrap">
             <div class="left">
                 <a href="respage.php">
-                <img src="img/0_200.png"/>
+                <i class="fas fa-heartbeat"></i>
                 <p>Viimeisin mittaus</p>
                 </a>
             </div>
 
             <div class="right">
                 <a href="diagram.html">
-                <img src="img/diagram-icon.png"/>
+                <i class="fas fa-chart-bar"></i>
                 <p>Taulukko</p>
                 </a>    
             </div>
