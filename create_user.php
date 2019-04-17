@@ -15,7 +15,7 @@ $confirm_password_err = "";
 
 // Validate username
 if(empty(trim($_POST["username"]))){
-    $username_err = "Please enter a username.";
+    $username_err = "Kirjoita käyttäjänimi";
 } else{
     // Prepare a select statement 
     $sql = "SELECT uid FROM login WHERE username = ?";
@@ -33,7 +33,7 @@ if(empty(trim($_POST["username"]))){
             mysqli_stmt_store_result($stmt);
             // check if uname b unique
             if(mysqli_stmt_num_rows($stmt) == 1){
-                $username_err = "This username is already taken.";
+                $username_err = "Käyttäjänimi on jo käytössä";
             } else{
                 $username = trim($_POST["username"]);
             }
@@ -47,20 +47,20 @@ if(empty(trim($_POST["username"]))){
 
  // Validate password that is longer than 6. no other rules
  if(empty(trim($_POST["password"]))){
-    $password_err = "Please enter a password.";     
+    $password_err = "Kirjoita salasana.";     
 } elseif(strlen(trim($_POST["password"])) < 6){
-    $password_err = "Password must have atleast 6 characters.";
+    $password_err = "Salasanassa täytyy olla vähintään 6 merkkiä.";
 } else{
     $password = trim($_POST["password"]);
 }   
 
  // Validate confirm password
  if(empty(trim($_POST["confirm_password"]))){
-    $confirm_password_err = "Please confirm password.";     
+    $confirm_password_err = "Vahvista salasana.";     
 } else{
     $confirm_password = trim($_POST["confirm_password"]);
     if(empty($password_err) && ($password != $confirm_password)){
-        $confirm_password_err = "Password did not match.";
+        $confirm_password_err = "Salasanat eivät täsmää.";
     }
 }
 
@@ -106,37 +106,45 @@ mysqli_close($link);
  <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<link rel="stylesheet" href="css/styles.css" type="text/css">
-		<title>BP App Login</title>
 		<meta charset="UTF-8"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+        <script src="js/script.js"></script>
+        <title>BP App Login</title>
 	</head>
 
 	<body>
-		<div id="loginPage">
-			<div id="headline"><p>Welcome to BPapp <br> </p></div>
-            <fieldset>
+        <div class="row">
+            
+            <div class="headline">Tervetuloa BPappiin</div>
+        
+        <div class="input-card">        
+		<div class="login">
+			<fieldset>
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-                <label>Username</label>
+                <label>Käyttäjänimi</label>
                 <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
                 <span class="help-block"><?php echo $username_err; ?></span>
             </div>    
             <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                <label>Password</label>
+                <label>Salasana</label>
                 <input type="password" name="password" class="form-control" value="<?php echo $password; ?>">
                 <span class="help-block"><?php echo $password_err; ?></span>
             </div>
             <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
-                <label>Confirm Password</label>
+                <label>Vahvista salasana</label>
                 <input type="password" name="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>">
                 <span class="help-block"><?php echo $confirm_password_err; ?></span>
             </div>
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Submit">
+                <input type="submit" class="btn btn-primary" value="Vahvista">
             </div>
-            <p>Already have an account? <a href="login_page.php">Login here</a>.</p>
+            <p>Sinulla on jo tunnukset? <a href="login_page.php">Kirjaudu täältä</a>.</p>
         </form>
-		</div>
+            </fieldset>
+            </div>
+        </div>
+        </div>
 	</body>
 </html> 

@@ -66,30 +66,16 @@ $sql = "UPDATE udata SET uid = $uid , $col =   WHERE uid = $uid";
 <body>
     
 <!-- The overlay -->
-<div id="myNav" class="overlay">
-
-  <!-- Button to close the overlay navigation -->
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-
-  <!-- Overlay content -->
-  <div class="overlay-content">
-    <a href="#">Lisää mittaustulos</a>
-    <a href="#">Viimeisin mittaustulos</a>
-    <a href="#">Diagrammi</a>
-      <br><hr><br>
-    <a href="#">Muokkaa profiilia</a>
-    <a href="#">Asetukset</a>
-    <a href="#">Kirjaudu ulos</a>  
-  </div>
-
+<div class="navbar">
+    <a href="#" onclick="history.go(-1)" class="return-btn"><i class="fas fa-arrow-left"></i></a>    
+        <p>BPapp</p>
+        
 </div>
+
+
 <div class="row">
-        <div class="logo">
-        <h1>Logo tähän</h1>
-        </div>
-
-
-        <div class="profile-card">
+        
+        <div class=setups>
           <div class="title">Profile</div>
           <div id="lresults">
             <ul>

@@ -9,7 +9,61 @@ if(isset($_SESSION["loggedin"]) == false){
 
 // placeholder datab connekt
 require_once "config.php";
+
+// create sum variabls. if you change the names, do so in all the files.
+$sysl = "";
+$dial = "";
+$pulsel = "";
+$timel = "";
+
+$sys_err =
+$dia_err =
+$pulse_err = "";
+
+
+//parsel the form
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+     // Validate systolic value
+    if(empty(trim($_POST["sys"]))){
+        $sys_err = "insert syspb.";
+    } else{$_SESSION["sys"] = $_POST["sys"];
+}
+
+    // Validate diastolic value
+    if(empty(trim($_POST["dia"]))){
+        $dia_err = "insert diapb.";
+    } else{$_SESSION["dia"] = $_POST["dia"];
+}
+
+    // Validate pulse value
+    if(empty(trim($_POST["pulse"]))){
+        $pulse_err = "insert pulse.";
+    } else{$_SESSION["pulse"] = $_POST["pulse"];
+      
+    $sys = $_SESSION["sys"] ; 
+    $dia = $_SESSION["dia"] ;
+    $pulse = $_SESSION["pulse"];
+
+    $sql2 = "INSERT INTO results (uid, sys, dia, pulse) VALUES (?, ?, ?, ?)";
+    $uid = $_SESSION["uid"];
+
+    if($stmt = mysqli_prepare($link, $sql2)){
+      mysqli_stmt_bind_param($stmt, "iiii", $uid, $sys, $dia, $pulse);
+    }else{echo "1";
+    }
+    if(mysqli_stmt_execute($stmt)){
+      mysqli_stmt_close($stmt);
+    
+    }
+    }
+  }
+
+
+
+
 ?>
+
+
 
 <!DOCTYPE html>
 <html>
@@ -19,6 +73,7 @@ require_once "config.php";
         <link rel="stylesheet" href="css/styles.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
         <script src="js/script.js"></script>
+        <script src="js/form.js"></script>
         <title>Homepage</title>
     </head>
     <body>
@@ -53,9 +108,45 @@ require_once "config.php";
         <h1>Logo tähän</h1>
         </div>
         
-        <button class="addresults-btn">+ lisää mittaustulos</button> 
+        <button class="addresults-btn" onclick="openForm()">+ lisää mittaustulos</button> 
         
-        
+
+           
+
+           <div class="form-popup" id="myForm">
+            <form action="respage.php" class="form-container">
+            <h1>Syötä arvot</h1>
+
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <div class="form-group <?php echo (!empty($sys_err)) ? 'has-error' : ''; ?>">
+                <label>sys</label><br>
+                <input type="sys" name="sys" class="form-control">
+                <span class="help-block"><?php echo $sys_err; ?></span>
+            </div>    
+            <div class="form-group <?php echo (!empty($dia_err)) ? 'has-error' : ''; ?>">
+                <label>dia</label><br>
+                <input type="dia" name="dia" class="form-control">
+                <span class="help-block"><?php echo $dia_err; ?></span>
+            </div>
+            <div class="form-group <?php echo (!empty($pulse_err)) ? 'has-error' : ''; ?>">
+                <label>pulssi</label><br>
+                <input type="pulse" name="pulse" class="form-control">
+                <span class="help-block"><?php echo $pulse_err; ?></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="tallenna">
+            </div>
+            
+                 <button type="button" class="btn cancel" onclick="closeForm()">SULJE</button>
+                
+                </form>
+    
+               
+  
+               </form>
+           </div>
+           
+           
         <!-- user profile -->
         
         <div class="profile-card">

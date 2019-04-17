@@ -45,6 +45,8 @@ body {
     border-radius: 12px; */
 }
 
+
+
 .navbar .return-btn {
     color: #9c031e;
     margin: 15px 0 0 15px;
@@ -345,7 +347,7 @@ body {
 }
 
 .login {
-    margin: 20px 0;
+    margin: 20px auto;
     width: 90%;
     text-align: center;
     padding: 15px
@@ -595,6 +597,72 @@ info-content{
     color: #9c031e;
 }
 
+
+/* The popup form - hidden by default */
+.form-popup {
+    display: none;
+    position: fixed;
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(255,255,255,0.7); /* Black w/ opacity */
+}
+
+/* Add styles to the form container */
+.form-container {
+    width: 80%;
+   margin: 50% auto; /* 15% from the top and centered */
+    padding: 20px;
+    background-color: #9c031e;
+    color: white; 
+    padding: 20px 10px;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container  input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+}
+
+.form-container h1{
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 36px;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
 
 @media only screen and (min-width: 600px) {
   /* For tablets: */
