@@ -102,10 +102,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <link rel="stylesheet" href="css/styles.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
         <script src="js/script.js"></script>
+        <script>
+            if ( window.history.replaceState ) {
+                window.history.replaceState( null, null, window.location.href );
+            }
+        </script>
         <title>respage</title>
 </head>
 
-<body>
+<body onload="ClearForm()">
     
 <!-- The overlay -->
 <div id="myNav" class="overlay">
@@ -150,7 +155,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <div class="title">syötä arvot</div>
             <div class="results">
             <fieldset>
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <form id="resform" name="resform" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group <?php echo (!empty($sys_err)) ? 'has-error' : ''; ?>">
                 <label>sys</label><br>
                 <input type="sys" name="sys" class="form-control">
@@ -167,7 +172,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <span class="help-block"><?php echo $pulse_err; ?></span>
             </div>
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="tallenna">
+                <input type="submit" class="btn btn-primary" value="tallenna" onClick="this.form.reset()">>
             </div>
             </form>
             </fieldset>

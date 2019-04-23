@@ -74,9 +74,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
         <script src="js/script.js"></script>
         <script src="js/form.js"></script>
+        <script>
+            if ( window.history.replaceState ) {
+                window.history.replaceState( null, null, window.location.href );
+            }
+        </script>
         <title>Homepage</title>
     </head>
-    <body>
+    <body onload="ClearForm()">
 <!-- The overlay -->
 <div id="myNav" class="overlay">
 
@@ -113,8 +118,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
            
 
-           <div class="form-popup" id="myForm">
-            <form action="respage.php" class="form-container" method="post">
+           <div class="form-popup" id="myForm" name="myform">
+            <form id="resform" name="resform" action="respage.php",  class="form-container" method="post">
             <h1>Syötä arvot</h1>
 
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
@@ -134,7 +139,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <span class="help-block"><?php echo $pulse_err; ?></span>
             </div>
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="tallenna">
+                <input type="submit" class="btn btn-primary" value="tallenna"> >
             </div>
             
                  <button type="button" class="btn cancel" onclick="closeForm()">SULJE</button>
