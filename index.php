@@ -114,7 +114,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
            
 
            <div class="form-popup" id="myForm">
-            <form action="respage.php" class="form-container">
+            <form action="respage.php" class="form-container" method="post">
             <h1>Syötä arvot</h1>
 
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
