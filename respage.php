@@ -93,7 +93,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 ?>
 
-
 <!DOCTYPE html>
 <html>
     
@@ -102,11 +101,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <link rel="stylesheet" href="css/styles.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
         <script src="js/script.js"></script>
-        <script>
+         <script>
             if ( window.history.replaceState ) {
                 window.history.replaceState( null, null, window.location.href );
             }
         </script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=News+Cycle:400,700" rel="stylesheet">
         <title>respage</title>
 </head>
 
@@ -121,24 +122,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   <!-- Overlay content -->
   <div class="overlay-content">
     <a href="index.php">Etusivu</a>
-    <a href="#">Lisää mittaustulos</a>
     <a href="respage.php">Viimeisin mittaustulos</a>
     <a href="diagram.html">Taulukko</a>
       <br><hr><br>
-    <a href="#">Muokkaa profiilia</a>
-    <a href="setups.html">Asetukset</a>
+    <a href="profile.php">Muokkaa profiilia</a>
+    <a href="setups.php">Asetukset</a>
     <a href="#">Kirjaudu ulos</a> 
   </div>
-
+    
 </div>
 
     <div class="navbar">
-        <a href="#" onclick="history.go(-1)" class="return-btn"><i class="fas fa-arrow-left"></i></a> 
-        <p>BPapp</p>
-        <span class="menubtn" onclick="openNav()"><i class="fas fa-bars"></i></span>
+            <a href="#" onclick="history.go(-1)" class="return-btn"><i class="fas fa-arrow-left"></i></a>
+           <span class="menubtn" onclick="openNav()"><i class="fas fa-bars"></i></span>
     </div>
         
-<div class="row">
+    <div class="row">
        
         <div class="result-card">
             <div class="title">viimeisimmät tulokset</div>
@@ -151,7 +150,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 </ul>
             </div>
         </div>
-            <div class="input-card">
+        
+        <div class="input-card">
             <div class="title">syötä arvot</div>
             <div class="results">
             <fieldset>
@@ -172,12 +172,30 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <span class="help-block"><?php echo $pulse_err; ?></span>
             </div>
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="tallenna" onClick="this.form.reset()">>
+               <input type="submit" class="btn btn-primary" value="tallenna" onClick="this.form.reset()">
             </div>
             </form>
             </fieldset>
             </div>
-		    </div>
+		  </div>
+        <!-- diagram and last measurement here -->
+        <div class="wrap">
+            <div class="left">
+                <a href="index.php">
+                <i class="fas fa-home"></i>
+                <p>Etusivu</p>
+                </a>
+            </div>
+
+            <div class="right">
+                <a href="diagram.php">
+                <i class="fas fa-chart-bar"></i>
+                <p>Taulukko</p>
+                </a>    
+            </div>
+        </div>
+        
+    </div>
 <footer>
 <p>2019 &copy; Databois</p>
 </footer>    

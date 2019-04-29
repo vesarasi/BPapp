@@ -95,7 +95,7 @@ $sql = "UPDATE udata SET uid = $uid , $col =   WHERE uid = $uid";
                       <input type="text" placeholder="<?php if(isset($lname)== true){echo $lname;}else{echo "last name";}  ?>" name="lname">
 
                       <button type="submit" class="btn">Hyväksy</button>
-                      <button type="button" class="btn cancel" onclick="closeForm()">Peruuta</button>
+                      <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
                     </form>
                   </div>
               
