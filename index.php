@@ -98,7 +98,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       <br><hr><br>
     <a href="profile.php">Muokkaa profiilia</a>
     <a href="setups.php">Asetukset</a>
-    <a href="#">Kirjaudu ulos</a> 
+    <a href="logout.php">Kirjaudu ulos</a> 
   </div>
 
 </div>
