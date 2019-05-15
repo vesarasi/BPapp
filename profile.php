@@ -34,8 +34,6 @@ if($stmt = mysqli_prepare($link, $sql)){
                 if(mysqli_stmt_fetch($stmt)) {
                 }else{echo "z";}
 
-                 
-
             }else{echo "1";}
            
         }else{echo "2";}
@@ -45,76 +43,166 @@ if($stmt = mysqli_prepare($link, $sql)){
 
 }else{echo "3";}
 
+if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-$
-$col = "";
-$sql = "UPDATE udata SET uid = $uid , $col =   WHERE uid = $uid";
+
+ $col = "";
+ $col2 = "";
+ $value = "";
+ $value2= "";
+
+ $sql1 = "UPDATE udata SET uid = $uid , $col = $value , $col2 = $value2 ,  WHERE uid = $uid ";
+ if($stmt = mysqli_prepare($link, $sql1)){
+ }else{echo "1";
+ }
+ if(mysqli_stmt_execute($stmt)){
+  mysqli_stmt_close($stmt);
+ }
+}
+
 ?>
-
 
 <!DOCTYPE html>
 <html>
     
-<head>
+    <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
         <script src="js/script.js"></script>
-        
-        <title>profile</title>
-</head>
-
-<body>
+        <script src="js/form.js"></script>
+        <script>
+            if ( window.history.replaceState ) {
+                window.history.replaceState( null, null, window.location.href );
+            }
+        </script>
+        <title>Homepage</title>
+    </head>
+    <body onload="ClearForm()">
     
 <!-- The overlay -->
-<div class="navbar">
-    <a href="#" onclick="history.go(-1)" class="return-btn"><i class="fas fa-arrow-left"></i></a>    
-        <p>BPapp</p>
-        
+<div id="myNav" class="overlay">
+
+  <!-- Button to close the overlay navigation -->
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+  <!-- Overlay content -->
+  <div class="overlay-content">
+    <a href="index.php">Etusivu</a>
+    <a href="#">Lisää mittaustulos</a>
+    <a href="respage.php">Viimeisin mittaustulos</a>
+    <a href="diagram.html">Taulukko</a>
+      <br><hr><br>
+    <a href="profile.php">Muokkaa profiilia</a>
+    <a href="setups.html">Asetukset</a>
+    <a href="#">Kirjaudu ulos</a> 
+  </div>
+
 </div>
+
+<!-- Use any element to open/show the overlay navigation menu -->       
+    <div class="navbar">
+        <p>BPapp</p>
+        <span class="menubtn" onclick="openNav()"><i class="fas fa-bars"></i></span>
+    </div>
+        
+       <div class="row">
+        <div class="logo">
+        <h1>Logo tähän</h1>
+        </div>
 
 
 <div class="row">
         
         <div class=setups>
-          <div class="title">Profile</div>
+          <div class="title">Profiili</div>
           <div id="lresults">
             <ul>
-                <li>username: <?php echo $uname;?> </li>
-                <li>name: <?php if(isset($fname) xor $lname === true){echo $fname." ".$lname;}else{echo "not set";}  ?>
-                  <button class="open-button" onclick="openForm()">Change</button>
+                <li>Käyttäjänimi: <?php echo $uname;?>
+               </li>
 
-                  <div class="form-popup" id="myForm">
-                    <form action="/action_page.php" class="form-container">
-                      <h1>Name</h1>
+                <li>nimi: <?php if(isset($fname) xor $lname === true){echo $fname." ".$lname;}else{echo "Ei asetettu";}  ?>
+                  <button class="open-button" onclick="openForm1()">Muuta</button>
 
-                      <label for="email"><b>first name</b></label>
-                      <input type="text" placeholder="<?php if(isset($fname)== true){echo $fname;}else{echo "first name";}  ?>" name="fname">
-                      <label for="email"><b>first name</b></label>
-                      <input type="text" placeholder="<?php if(isset($lname)== true){echo $lname;}else{echo "last name";}  ?>" name="lname">
+                  <div class="form-popup" id="myForm1">
+                    <form action="profile.php" class="form-container" method="post">
+                      <h1>Nimi</h1>
 
-                      <button type="submit" class="btn">Apply</button>
-                      <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                      <label for="fname"><b>etunimi</b></label>
+                      <input type="text" placeholder="<?php if(isset($fname)== true){echo $fname;}else{echo "etunimi";}  ?>" name="firstname">
+                      <label for="lname"><b>sukunimi</b></label>
+                      <input type="text" placeholder="<?php if(isset($lname)== true){echo $lname;}else{echo "sukunimi";}  ?>" name="lastname">
+
+                      <button type="submit" class="btn" onclick=<?php $col="firstname"; $col2="lastname";?>     >tallenna</button>
+                      <button type="button" class="btn cancel" onclick="closeForm1()">sulje</button>
                     </form>
                   </div>
               
               
               
                 </li>
-                <li>Email: <?php if(isset($email) == true){echo $email;}else{echo "not set";}  ?>
+                <li>Email: <?php if(isset($email) == true){echo $email;}else{echo "Ei asetettu";}  ?>
+                <button class="open-button" onclick="openForm2()">Muuta</button>
+
+                <div class="form-popup" id="myForm2">
+                  <form action="profile.php" class="form-container" method="post">
+                    <h1>email</h1>
+
+                    <label for="email"><b>Email osoite</b></label>
+                    <input type="text" placeholder="<?php if(isset($email)== true){echo $email;}else{echo "example@email.com";}  ?>" name="email">
+
+                    <button type="submit" class="btn" onclick=<?php $col="email";?>>tallenna</button>
+                    <button type="button" class="btn cancel" onclick="closeForm2()">sulje</button>
+                  </form>
+                </div>
 
                 </li>
-                <li>age: <?php if(isset($age) == true){echo $age;}else{echo "not set";} ?> 
+                <li>ikä: <?php if(isset($age) == true){echo $age;}else{echo "ei asetettu";} ?>
+                <button class="open-button" onclick="openForm3()">Muuta</button>
+
+                <div class="form-popup" id="myForm3">
+                  <form action="profile.php" class="form-container" method="post">
+                    <h1>Ikä</h1>
+
+                    <label for="age"><b>Ikä</b></label>
+                    <input type="text" placeholder="<?php if(isset($age)== true){echo $age;}else{echo "ei asetettu";}  ?>" name="age">
+
+                    <button type="submit" class="btn"onclick=<?php $col="age"; ?> >tallenna</button>
+                    <button type="button" class="btn cancel" onclick="closeForm3()">sulje</button>
+                  </form>
+                </div> 
 
                 </li>
-                <li>height: <?php if(isset($height) == true){echo $height;}else{echo "not set";}  ?> 
+                <li>pituus: <?php if(isset($height) == true){echo $height;}else{echo "not set";}  ?> 
+                <button class="open-button" onclick="openForm4()">Muuta</button>
+
+                <div class="form-popup" id="myForm4">
+                  <form action="profile.php" class="form-container" method="post">
+                    <h1>Pituus</h1>
+
+                    <label for="height"><b>Pituus</b></label>
+                    <input type="text" placeholder="<?php if(isset($height)== true){echo $height;}else{echo "Ei asetettu";}  ?>" name="height">
+
+                    <button type="submit" class="btn" onclick=<?php $col="height";?>   >tallenna</button>
+                    <button type="button" class="btn cancel" onclick="closeForm4()">sulje</button>
+                  </form>
+                </div>
 
                 </li>
-                <li>weight: <?php if(isset($weight) == true){echo $weight;}else{echo "not set";}  ?> 
+                <li>paino: <?php if(isset($weight) == true){echo $weight;}else{echo "Ei asetettu";}  ?> 
+                <button class="open-button" onclick="openForm5()">Change</button>
 
-                </li>
-                <li>Change password <br> <?php echo $a; ?> 
+                <div class="form-popup" id="myForm5">
+                  <form action="/profile.php" class="form-container" method="post">
+                    <h1>Paino</h1>
 
-                </li>
+                    <label for="weight"><b>Paino</b></label>
+                    <input type="text" placeholder="<?php if(isset($weight)== true){echo $weight;}else{echo "not set";}  ?>" name="weight">
+
+                    <button type="submit" class="btn" onclick=<?php $col="weight"; ?>   >tallenna</button>
+                    <button type="button" class="btn cancel" onclick="closeForm5()">sulje</button>
+                  </form>
+                </div>
             </ul>
         </div>
       </div>
