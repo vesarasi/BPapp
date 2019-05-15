@@ -65,66 +65,45 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <!DOCTYPE html>
 <html>
     
-    <head>
+<head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="css/styles.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
         <script src="js/script.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=News+Cycle:400,700" rel="stylesheet">
         <script src="js/form.js"></script>
         <script>
             if ( window.history.replaceState ) {
                 window.history.replaceState( null, null, window.location.href );
             }
         </script>
-        <title>Profile</title>
-    </head>
-    <body onload="ClearForm()">
+        <title>profile</title>
+</head>
+
+<body>
     
 <!-- The overlay -->
-<div id="myNav" class="overlay">
-
-  <!-- Button to close the overlay navigation -->
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-
-  <!-- Overlay content -->
-  <div class="overlay-content">
-    <a href="index.php">Etusivu</a>
-    <a href="#">Lisää mittaustulos</a>
-    <a href="respage.php">Viimeisin mittaustulos</a>
-    <a href="diagram.html">Taulukko</a>
-      <br><hr><br>
-    <a href="profile.php">Muokkaa profiilia</a>
-    <a href="setups.html">Asetukset</a>
-    <a href="#">Kirjaudu ulos</a> 
-  </div>
-
-</div>
-
-<!-- Use any element to open/show the overlay navigation menu -->       
-    <div class="navbar">
+<div class="navbar">
+    <a href="#" onclick="history.go(-1)" class="return-btn"><i class="fas fa-arrow-left"></i></a>    
         <p>BPapp</p>
-        <span class="menubtn" onclick="openNav()"><i class="fas fa-bars"></i></span>
-    </div>
         
-       <div class="row">
-        <div class="logo">
-        <h1>Logo tähän</h1>
-        </div>
+</div>
 
 
 <div class="row">
         
         <div class=setups>
-          <div class="title">Profiili</div>
+        <div class="title">Profiili</div>
           <div id="lresults">
             <ul>
-                <li>Käyttäjänimi: <?php echo $uname;?>
+                 <li>Käyttäjänimi: <?php echo $uname;?>
                </li>
 
-                <li>nimi: <?php if(isset($fname) xor $lname === true){echo $fname." ".$lname;}else{echo "Ei asetettu";}  ?>
+                <li>Nimi: <?php if(isset($fname) xor $lname === true){echo $fname." ".$lname;}else{echo "Ei asetettu";}  ?>
                   <button class="open-button" onclick="openForm1()">Muuta</button>
 
-                  <div class="form-popup" id="myForm1">
+                 <div class="form-popup" id="myForm1">
                     <form action="profile.php" class="form-container" method="post">
                       <h1>Nimi</h1>
 
@@ -141,13 +120,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
               
               
                 </li>
-                <li>Email: <?php if(isset($email) == true){echo $email;}else{echo "Ei asetettu";}  ?>
+                <li>Sähköposti: <?php if(isset($email) == true){echo $email;}else{echo "Ei asetettu";}  ?>
                 <button class="open-button" onclick="openForm2()">Muuta</button>
-
+                
                 <div class="form-popup" id="myForm2">
                   <form action="profile.php" class="form-container" method="post">
-                    <h1>email</h1>
-
+                    <h1>Sähköposti</h1>
+                      
                     <label for="email"><b>Email osoite</b></label>
                     <input type="text" placeholder="<?php if(isset($email)== true){echo $email;}else{echo "example@email.com";}  ?>" name="email">
 
@@ -155,9 +134,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <button type="button" class="btn cancel" onclick="closeForm2()">sulje</button>
                   </form>
                 </div>
-
+                
                 </li>
-                <li>ikä: <?php if(isset($age) == true){echo $age;}else{echo "ei asetettu";} ?>
+                <li>Ikä: <?php if(isset($age) == true){echo $age;}else{echo "ei asetettu";} ?>
                 <button class="open-button" onclick="openForm3()">Muuta</button>
 
                 <div class="form-popup" id="myForm3">
@@ -173,7 +152,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 </div> 
 
                 </li>
-                <li>pituus: <?php if(isset($height) == true){echo $height;}else{echo "not set";}  ?> 
+                <li>Pituus: <?php if(isset($height) == true){echo $height;}else{echo "not set";}  ?> 
                 <button class="open-button" onclick="openForm4()">Muuta</button>
 
                 <div class="form-popup" id="myForm4">
@@ -186,11 +165,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <button type="submit" class="btn" onclick=<?php $col="height";?>   >tallenna</button>
                     <button type="button" class="btn cancel" onclick="closeForm4()">sulje</button>
                   </form>
-                </div>
+                </div> 
 
                 </li>
-                <li>paino: <?php if(isset($weight) == true){echo $weight;}else{echo "Ei asetettu";}  ?> 
-                <button class="open-button" onclick="openForm5()">Change</button>
+                <li>Paino: <?php if(isset($weight) == true){echo $weight;}else{echo "Ei asetettu";}  ?> 
+                <button class="open-button" onclick="openForm5()">Muuta</button>
 
                 <div class="form-popup" id="myForm5">
                   <form action="/profile.php" class="form-container" method="post">
@@ -203,6 +182,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <button type="button" class="btn cancel" onclick="closeForm5()">sulje</button>
                   </form>
                 </div>
+
+                </li>
             </ul>
         </div>
       </div>

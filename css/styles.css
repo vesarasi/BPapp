@@ -676,6 +676,21 @@ info-content{
     color: white;
     text-decoration: none;
 }
+.open-button {
+    background-color: #9c031e; 
+    background-image: linear-gradient(rgba(156,3,30,0), rgba(0,0,0,0.2));
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    font-weight: bold;
+    border-radius: 12px; 
+    justify-content: center;
+    float: right;
+}
 
 
 /* ----------- iPhone 4 and 4S ----------- */
@@ -1119,6 +1134,12 @@ info-content{
     
     .setups a {
           
+    }
+
+    .open-button {
+        padding: 5px 20px;
+        margin: 1px 1px;
+        font-size: 12px;
     }
       
 }
