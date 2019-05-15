@@ -74,11 +74,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
         <script src="js/script.js"></script>
         <script src="js/form.js"></script>
-        <script>
+         <script>
             if ( window.history.replaceState ) {
                 window.history.replaceState( null, null, window.location.href );
             }
         </script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=News+Cycle:400,700" rel="stylesheet">
         <title>Homepage</title>
     </head>
     <body onload="ClearForm()">
@@ -91,35 +93,37 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   <!-- Overlay content -->
   <div class="overlay-content">
     <a href="index.php">Etusivu</a>
-    <a href="#">Lisää mittaustulos</a>
     <a href="respage.php">Viimeisin mittaustulos</a>
-    <a href="diagram.html">Taulukko</a>
+    <a href="diagram.php">Taulukko</a>
       <br><hr><br>
-    <a href="#">Muokkaa profiilia</a>
-    <a href="setups.html">Asetukset</a>
-    <a href="#">Kirjaudu ulos</a> 
+    <a href="profile.php">Muokkaa profiilia</a>
+    <a href="setups.php">Asetukset</a>
+    <a href="logout.php">Kirjaudu ulos</a> 
   </div>
 
 </div>
 
 <!-- Use any element to open/show the overlay navigation menu -->       
     <div class="navbar">
-        <p>BPapp</p>
         <span class="menubtn" onclick="openNav()"><i class="fas fa-bars"></i></span>
     </div>
         
        <div class="row">
         <div class="logo">
-        <h1>Logo tähän</h1>
+            <img src="img/BPapp_logo.png">
+            <p>BPapp</p>
         </div>
         
-        <button class="addresults-btn" onclick="openForm()">+ lisää mittaustulos</button> 
+           <button class="addresults-btn" onclick="openForm()">+ lisää mittaustulos</button> 
         
 
            
 
            <div class="form-popup" id="myForm" name="myform">
             <form id="resform" name="resform" action="respage.php",  class="form-container" method="post">
+            
+                <a href="javascript:void(0)" class="closebtn" onclick="closeForm()">&times;</a> 
+                <br>   
             <h1>Syötä arvot</h1>
 
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
@@ -139,47 +143,62 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <span class="help-block"><?php echo $pulse_err; ?></span>
             </div>
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="tallenna"> >
+                <input type="submit" class="btn btn-primary" value="tallenna">
             </div>
-            
-                 <button type="button" class="btn cancel" onclick="closeForm()">SULJE</button>
                 
                 </form>
-    
-               
   
                </form>
            </div>
+                    
            
            
-        <!-- user profile -->
+        <!-- Chart here-->
         
-        <div class="profile-card">
-            <div class="title">Käyttäjä</div>
-            <img src="img/0_200.png"/>
-            <h2><?php echo $firstname ." ".$lastname ;?> </h2>
-            <ul>
-                <li>IKÄ:<?php echo $age;?> </li>
-                <li>PITUUS:<?php echo $length;?> </li>
-                <li>PAINO: <?php echo $weight;?></li>
-            </ul>
+        <div class="output">
+            
+            
         </div>  
     
-        <!-- diagram and last measurement here -->
+        
         <div class="wrap">
-            <div class="left">
-                <a href="respage.php">
-                <i class="fas fa-heartbeat"></i>
-                <p>Viimeisin mittaus</p>
-                </a>
+            
+            <!-- User profile -->
+        
+            <div class="profile">
+                <div class="title">Käyttäjä</div>
+                <img src="img/0_200.png"/>
+                <!-- <i class="fas fa-user"></i> -->
+                    <h2><?php echo $firstname ." ".$lastname ;?> </h2>
+                <ul>
+                    <li>IKÄ:<?php echo $age;?> </li>
+                    <li>PITUUS:<?php echo $length;?> </li>
+                    <li>PAINO: <?php echo $weight;?></li>
+                </ul>
+                <a href="profile.php"><button>Muokkaa tietoja</button></a>
             </div>
-
-            <div class="right">
-                <a href="diagram.html">
-                <i class="fas fa-chart-bar"></i>
-                <p>Taulukko</p>
-                </a>    
+            
+            <!-- buttons -->
+            
+            <div class="buttons-right">
+                
+                <div id="btn1" class="button">
+                    <a href="diagram.php">
+                    <i class="fas fa-chart-bar"></i>
+                    <p>Taulukko</p>
+                    </a>    
+                </div>
+                
+                <div id="btn2" class="button">
+                    <a href="respage.php">
+                    <i class="fas fa-heartbeat"></i>
+                    <p>Viimeisin mittaus</p>
+                    </a>
+                </div>
+                
+                
             </div>
+            
             
         </div>
     

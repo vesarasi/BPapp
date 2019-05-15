@@ -70,6 +70,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <link rel="stylesheet" href="css/styles.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
         <script src="js/script.js"></script>
+<<<<<<< HEAD
         <script src="js/form.js"></script>
         <script>
             if ( window.history.replaceState ) {
@@ -79,6 +80,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <title>Homepage</title>
     </head>
     <body onload="ClearForm()">
+=======
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=News+Cycle:400,700" rel="stylesheet">
+        <title>profile</title>
+</head>
+
+<body>
+>>>>>>> 747e06f5054c7869f9c1687e79162bc9d9de3f4b
     
 <!-- The overlay -->
 <div id="myNav" class="overlay">
@@ -118,6 +127,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
           <div class="title">Profiili</div>
           <div id="lresults">
             <ul>
+<<<<<<< HEAD
                 <li>Käyttäjänimi: <?php echo $uname;?>
                </li>
 
@@ -135,12 +145,30 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                       <button type="submit" class="btn" onclick=<?php $col="firstname"; $col2="lastname";?>     >tallenna</button>
                       <button type="button" class="btn cancel" onclick="closeForm1()">sulje</button>
+=======
+                <li>Käyttäjänimi: <?php echo $uname;?> </li>
+                <li>Nimi: <?php if(isset($fname) xor $lname === true){echo $fname." ".$lname;}else{echo "not set";}  ?>
+                  <button class="open-button" onclick="openForm()">Muuta</button>
+
+                  <div class="form-popup" id="myForm">
+                    <form action="/action_page.php" class="form-container">
+                      <h1>Nimi</h1>
+
+                      <label for="email"><b>Etunimi</b></label>
+                      <input type="text" placeholder="<?php if(isset($fname)== true){echo $fname;}else{echo "first name";}  ?>" name="fname">
+                      <label for="email"><b>Sukunimi</b></label>
+                      <input type="text" placeholder="<?php if(isset($lname)== true){echo $lname;}else{echo "last name";}  ?>" name="lname">
+
+                      <button type="submit" class="btn">Hyväksy</button>
+                      <button type="button" class="btn cancel" onclick="closeForm()">Peruuta</button>
+>>>>>>> 747e06f5054c7869f9c1687e79162bc9d9de3f4b
                     </form>
                   </div>
               
               
               
                 </li>
+<<<<<<< HEAD
                 <li>Email: <?php if(isset($email) == true){echo $email;}else{echo "Ei asetettu";}  ?>
                 <button class="open-button" onclick="openForm2()">Muuta</button>
 
@@ -187,6 +215,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <button type="button" class="btn cancel" onclick="closeForm4()">sulje</button>
                   </form>
                 </div>
+=======
+                <li>Sähköposti: <?php if(isset($email) == true){echo $email;}else{echo "not set";}  ?>
+
+                </li>
+                <li>Ikä: <?php if(isset($age) == true){echo $age;}else{echo "not set";} ?> 
+
+                </li>
+                <li>Pituus: <?php if(isset($height) == true){echo $height;}else{echo "not set";}  ?> 
+
+                </li>
+                <li>Paino: <?php if(isset($weight) == true){echo $weight;}else{echo "not set";}  ?> 
+
+                </li>
+                <li>Vaihda salasana: <br> <?php echo $a; ?> 
+>>>>>>> 747e06f5054c7869f9c1687e79162bc9d9de3f4b
 
                 </li>
                 <li>paino: <?php if(isset($weight) == true){echo $weight;}else{echo "Ei asetettu";}  ?> 
@@ -206,6 +249,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </ul>
         </div>
       </div>
+    </div>
 <footer>
 <p>2019 &copy; Databois</p>
 </footer>    

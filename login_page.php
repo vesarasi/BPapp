@@ -87,7 +87,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Close connection
     mysqli_close($link);
 }
-
     
 ?>
  <!DOCTYPE html>
@@ -97,13 +96,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <link rel="stylesheet" href="css/styles.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
         <script src="js/script.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=News+Cycle:400,700" rel="stylesheet">
         <title>BP App Login</title>
 	</head>
 
 	<body>
         <div class="row">
             
-            <div class="headline">Tervetuloa BPappiin</div>
+            <div class="headline">
+                <div class="logo">
+                    <img src="img/BPapp_logo.png">
+                    <p>BPapp</p>
+                </div>
+            </div>
             
 
             <div class="input-card">
